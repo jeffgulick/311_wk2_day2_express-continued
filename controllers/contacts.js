@@ -10,4 +10,4 @@ const show = (req, res) => {
 //creates a post
 const create = () => {}
 
-module.exports = { list, show, create }
+module.exports = { list, show, create }//exports the above to the router
