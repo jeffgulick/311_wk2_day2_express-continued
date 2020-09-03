@@ -1,13 +1,9 @@
 const express = require('express');
-const contacts =  require('../data/contacts');
 const router = express.Router();
 
-router.get("/contacts", (req, res) => {
-    res.json(contacts);
-})
+const contactControl = require('../controllers/contacts')
 
-router.get("/contacts/:id", (req, res) => {
-    res.json(contacts.filter(user => user._id == (req.params.id)));
-})
+router.get('/contacts', contactControl.list);//gets the whole object
+router.get('/contacts/:id', contactControl.show);//gets by user id
 
 module.exports = router
