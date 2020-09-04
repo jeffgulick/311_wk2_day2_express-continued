@@ -1,13 +1,10 @@
 const express = require('express');
-const products = require('../data/products');
 const router = express.Router();
 
-router.get("/products", (req, res) => {
-    res.json(products);
-})
+const productControl = require('../controllers/products')
 
-router.get("/products/:id", (req, res) => {
-    res.json(products.filter(product => product._id == (req.params.id)));
-})
+router.get("/products", productControl.list);//get all
+router.get("/products/:id", productControl.show);//get by id
+router.post("/products", productControl.create);//post new
 
 module.exports = router
